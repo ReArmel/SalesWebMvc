@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Models;
 
+
 namespace SalesWebMvc.Controllers
 {
     public class HomeController : Controller
@@ -17,7 +18,7 @@ namespace SalesWebMvc.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Salles Web MVC App from C# Course";
+            ViewData["Message"] = "Sales Web MVC App from C# Course";
             ViewData["Aluna"] = "Renata Armel";
 
             return View();
