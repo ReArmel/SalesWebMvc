@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 
 namespace SalesWebMvc
 {
@@ -41,8 +42,10 @@ namespace SalesWebMvc
                 options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"),
                 new MySqlServerVersion(new Version(8, 0, 32)), // Specify the MySQL server version you are using.
                 builder => builder.MigrationsAssembly("SalesWebMvc")));
+            //registers the services in the application's dependency injection system
+            services.AddScoped<SeedingService>(); 
+            services.AddScoped<SellerService>();
 
-            services.AddScoped<SeedingService>(); //registers the service in the application's dependency injection system
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,12 +66,12 @@ namespace SalesWebMvc
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-          /*  app.UseMvc(routes =>
+            app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });*/
+            });
         }
     }
 }
