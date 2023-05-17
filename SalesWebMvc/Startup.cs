@@ -46,10 +46,8 @@ namespace SalesWebMvc
             //registers the services in the application's dependency injection system
             services.AddScoped<SeedingService>(); 
             services.AddScoped<SellerService>();
+            services.AddScoped<DepartmentService>();
             services.AddControllers();
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +78,6 @@ namespace SalesWebMvc
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
         }
     }
 }
